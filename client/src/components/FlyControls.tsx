@@ -29,6 +29,7 @@ function FlyControls({
   })
   const mouseRef = useRef({ x: 0, y: 0 })
   const isPointerLockedRef = useRef(false)
+  const eulerRef = useRef(new THREE.Euler(0, 0, 0, 'YXZ'))
 
   // Handle keyboard input
   useEffect(() => {
@@ -165,8 +166,9 @@ function FlyControls({
     
     // Apply rotation when pointer is locked
     if (isPointerLockedRef.current) {
-      camera.rotation.y = -mouseRef.current.x
-      camera.rotation.x = -mouseRef.current.y
+      // Use Euler angles for proper first-person camera rotation
+      eulerRef.current.set(-mouseRef.current.y, -mouseRef.current.x, 0, 'YXZ')
+      camera.quaternion.setFromEuler(eulerRef.current)
     }
   })
 
