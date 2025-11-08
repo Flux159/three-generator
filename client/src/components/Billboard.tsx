@@ -23,13 +23,14 @@ function Billboard({
   useEffect(() => {
     if (textureUrl) {
       const loader = new TextureLoader()
-      loader.load(textureUrl, (texture) => {
+loader.load(textureUrl, (texture) => {
         textureRef.current = texture
         if (meshRef.current) {
           const material = meshRef.current.material as THREE.MeshStandardMaterial
           material.map = texture
-          material.needsUpdate = true
           material.transparent = true
+          material.alphaTest = 0.1
+          material.needsUpdate = true
         }
       })
     }
