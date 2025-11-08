@@ -1,12 +1,12 @@
 import { Canvas } from "@react-three/fiber";
 import { useTexture } from "@react-three/drei";
-import SpinningCube from "./components/SpinningCube";
 import Landscape from "./components/Landscape";
 import Skybox from "./components/Skybox";
 // import Billboard from './components/Billboard'
 import FlyControls from "./components/FlyControls";
 import Rock from "./components/Rock";
 import House from "./components/House";
+import Horse from "./components/Horse";
 
 function GrassPlane() {
   const grassTexture = useTexture("/uploads/grass_texture.png");
@@ -14,7 +14,7 @@ function GrassPlane() {
   return (
     <mesh position={[0, 0.1, -5]} rotation={[0, 0, 0]}>
       <planeGeometry args={[4, 4]} />
-      <meshStandardMaterial map={grassTexture} />
+      <meshStandardMaterial map={grassTexture} transparent={true} alphaTest={0.5} />
     </mesh>
   );
 }
@@ -23,17 +23,22 @@ function App() {
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
       <Canvas camera={{ position: [0, 2, 10], fov: 75 }}>
-        <ambientLight intensity={0.6} />
-        <directionalLight position={[10, 10, 5]} intensity={0.8} castShadow />
+        <ambientLight intensity={1.2} />
+        <directionalLight position={[10, 10, 5]} intensity={1.2} castShadow />
+        <directionalLight position={[-10, 5, -5]} intensity={0.6} />
+        <pointLight position={[0, 10, 0]} intensity={0.8} />
+        <pointLight position={[5, 5, 5]} intensity={0.5} />
+        <pointLight position={[-5, 5, -5]} intensity={0.5} />
         <Skybox />
         <Landscape />
         {/* <Billboard position={[0, 1, -5]} textureUrl="/uploads/grass_texture.png" /> */}
         <GrassPlane />
-        <SpinningCube position={[3, 0, 0]} />
+        {/* <SpinningCube position={[3, 0, 0]} /> */}
         {/* <Rock position={[-2, -1.8, 3]} scale={0.4} /> */}
         <Rock position={[-3, -1.8, 4]} scale={0.3} rotation={[0, 0.5, 0]} />
         {/* <Rock position={[-1.5, -1.8, 2]} scale={0.5} rotation={[0, -0.3, 0]} /> */}
         <House position={[5, -0.5, -2]} scale={0.8} />
+        <Horse position={[2, 0, -3]} scale={0.6} rotation={[0, 1.5, 0]} />
         <FlyControls />
       </Canvas>
       <div
