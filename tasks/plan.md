@@ -28,10 +28,12 @@ This project will create a three.js level generation system that integrates with
 
 ### Phase 1: Foundation Setup ✅
 - [x] Project planning and architecture design
-- [ ] TypeScript Vite + Express setup
-- [ ] Prisma + SQLite configuration
-- [ ] Basic Three.js spinning cube demo
-- [ ] Testing infrastructure (Vitest)
+- [x] TypeScript Vite + Express setup
+- [x] Prisma + SQLite configuration
+- [x] Basic Three.js spinning cube demo
+- [x] Testing infrastructure (Vitest)
+- [x] Add landscape plane, blue skybox, and billboard for texture display
+- [ ] Integrate with MCP asset-gen server for texture generation
 
 ### Phase 2: Backend API Development
 - [ ] Database schema design (scenes, assets, metadata)
@@ -102,7 +104,9 @@ three-generator/
 
 ## Next Steps
 1. Complete Phase 1 foundation setup
-2. Design database schema for scenes and assets
-3. Implement basic MCP integration
-4. Create first working asset generation pipeline
-5. Build user interface for scene management
+2. Add landscape plane, blue skybox, and billboard for texture display
+3. Integrate with MCP asset-gen server for texture generation
+4. Design database schema for scenes and assets
+5. Implement basic MCP integration
+6. Create first working asset generation pipeline
+7. Build user interface for scene management

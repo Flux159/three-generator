@@ -2,7 +2,11 @@ import { useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { Mesh } from 'three'
 
-function SpinningCube() {
+interface SpinningCubeProps {
+  position?: [number, number, number]
+}
+
+function SpinningCube({ position = [0, 0, 0] }: SpinningCubeProps) {
   const meshRef = useRef<Mesh>(null)
 
   useFrame((_state, delta) => {
@@ -13,7 +17,7 @@ function SpinningCube() {
   })
 
   return (
-    <mesh ref={meshRef}>
+    <mesh ref={meshRef} position={position}>
       <boxGeometry args={[1, 1, 1]} />
       <meshStandardMaterial color="orange" />
     </mesh>
