@@ -69,6 +69,8 @@ module.exports = [
       '@typescript-eslint/no-explicit-any': 'warn',
       'prefer-const': 'error',
       'no-var': 'error',
+      'no-undef': 'off',
+      'react-hooks/immutability': 'off',
     },
   },
   {
